@@ -1,2 +1,20 @@
 <app-loader></app-loader>
 <router-outlet />
+<footer>
+  <button
+  mat-icon-button
+  api
+  aria-label="API Docs"
+  (click)="onAPI()"
+>
+  <mat-icon>api</mat-icon>
+</button>
+<button
+mat-icon-button
+raw
+aria-label="Raw Response"
+(click)="onRaw()"
+>
+<mat-icon>raw_on</mat-icon>
+</button>
+</footer>
