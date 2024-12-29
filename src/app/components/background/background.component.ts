@@ -1,11 +1,10 @@
-import { Component, ElementRef, inject, Renderer2, SimpleChange } from '@angular/core';
-import { EventType, Router } from '@angular/router';
-
+import { Component, ElementRef, inject, Renderer2 } from '@angular/core';
+import { Router, EventType } from '@angular/router';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 @Component({
   selector: 'app-background',
-  imports: [],
-  templateUrl: './background.component.html',
-  styleUrl: './background.component.scss'
+  imports: [CommonModule, NgOptimizedImage],
+  templateUrl: './background.component.html'
 })
 export class BackgroundComponent {
 
@@ -17,6 +16,8 @@ export class BackgroundComponent {
     '/backgrounds/5.webp',
   ]
 
+  imgSrc ?: string;
+
   constructor(
     private element: ElementRef = inject(ElementRef),
     private renderer: Renderer2 = inject(Renderer2),
@@ -24,8 +25,8 @@ export class BackgroundComponent {
   ) {
     this.router.events.subscribe((e) => {
       switch (e.type) {
-        case EventType.NavigationEnd:
-          this.ngAfterViewInit();
+        case EventType.NavigationStart:
+          this.rotateBackground();
           break;
         default:
           break
@@ -33,14 +34,9 @@ export class BackgroundComponent {
     })
   }
 
-  ngOnChanges(changes: SimpleChange): void {
-    // this.dbSub?.unsubscribe();
-    this.ngAfterViewInit();
-  }
-
-  ngAfterViewInit(): void {
+  rotateBackground() {
     const current = this.backgrounds.shift() as string;
     this.backgrounds.push(current);
-    this.renderer.setStyle(this.element.nativeElement, "background-image", `url(${current})`);
+    this.imgSrc = current;
   }
 }

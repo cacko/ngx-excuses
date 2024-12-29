@@ -79,7 +79,6 @@ export class ExcuseComponent implements OnInit, OnDestroy {
   onNextRandom($event: any) {
     $event.preventDefault();
     $event.stopPropagation();
-    // $event.currentTarget.disabled = true;
     this.goToNextRandom();
   }
 

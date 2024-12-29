@@ -6,12 +6,13 @@ app-excuse {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0 0.3rem;
   background-color: rgba(0,0,0,0.7);
   border-radius: 1rem;
   padding: 1rem;
   h1 {
     text-align: center;
+    padding: 0 0.3rem;
+
   }
   button[autoplay] {
     &[state="true"] {

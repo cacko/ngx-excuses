@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { ExcuseService } from './service/excuse.service';
@@ -11,7 +11,7 @@ import { BackgroundComponent } from './components/background/background.componen
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LoaderComponent, MatIconModule, MatButtonModule, BackgroundComponent],
+  imports: [RouterOutlet, LoaderComponent, MatIconModule, MatButtonModule, BackgroundComponent, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
