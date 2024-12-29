@@ -1,8 +1,8 @@
 {
-  "name": "ngx-excuses",
-  "short_name": "ngx-excuses",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "excuses",
+  "short_name": "excuses",
+  "theme_color": "#101414",
+  "background_color": "#101414",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

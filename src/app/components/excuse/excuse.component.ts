@@ -9,7 +9,6 @@ import { ExcuseService } from '../../service/excuse.service';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { StorageService } from '../../service/storage.service';
 import { Observable, Subscription, timer } from 'rxjs';
-
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 interface RouteDataEntity {
   data?: ExcuseEntity;

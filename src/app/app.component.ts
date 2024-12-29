@@ -7,15 +7,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { SwUpdate, VersionEvent } from '@angular/service-worker';
 import { interval } from 'rxjs';
 import { MatSnackBar as MatSnackBar } from '@angular/material/snack-bar';
+import { NgxBackgroundBeamsComponent } from '@omnedia/ngx-background-beams';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LoaderComponent, MatIconModule, MatButtonModule],
+  imports: [RouterOutlet, LoaderComponent, MatIconModule, MatButtonModule, NgxBackgroundBeamsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   title = 'ngx-excuses';
+  beams = ['#a80710', '#00bebe', '#AE48FF'];
 
   constructor(
     private excuseService: ExcuseService,
