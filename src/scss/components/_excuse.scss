@@ -1,13 +1,34 @@
+@use "@angular/material" as mat;
+
 app-excuse {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
+  padding: 1rem;
   align-items: center;
   justify-content: center;
-  [text] {
+  button[autoplay] {
+    &[state="true"] {
+        @include mat.icon-button-overrides(
+            (
+              icon-color: var(--mat-sys-primary)
+            )
+          );
+    }
+    &[state="false"] {
+        @include mat.icon-button-overrides(
+            (
+              icon-color: var(--mat-sys-outline)
+            )
+          );
+    }
   }
+  mat-progress-bar {
+    padding: 1rem;
+    width: 20rem !important;
+  }
+
   @media screen and (max-width: 960px) {
   }
 }
-

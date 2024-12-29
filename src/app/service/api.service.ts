@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { LoaderService } from './loader.service';
 import { isUndefined, omitBy } from 'lodash-es';
 import { Observable, tap } from 'rxjs';
@@ -12,12 +12,16 @@ import { StorageService } from './storage.service';
 })
 export class ApiService {
 
+
   constructor(
     private httpClient: HttpClient,
     private loaderService: LoaderService,
     private storage: StorageService
   ) { }
 
+  get api_base_url() {
+    return isDevMode() ? API.LOCAL_BASE_URL : API.BASE_URL
+  }
 
   fetch(
     action: ApiAction,
@@ -33,7 +37,7 @@ export class ApiService {
       }
       this.loaderService.show();
       this.httpClient
-        .get(`${API.BASE_URL}/${path.join("/")}`, {
+        .get(`${this.api_base_url}/${path.join("/")}`, {
           // headers: { 'X-User-Token': this.userToken },
           params: new HttpParams({ fromString: urlParams.toString() }),
           observe: 'body',

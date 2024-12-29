@@ -21,11 +21,10 @@ tasks:
 
   deploy:
     desc: deploy
-    dir: web
     cmds:
       - ng build
       - tar cfz dist.tgz dist/ngx-excuses/browser
-      - scp dist.tgz open:/var/www/{{.PROJECT}}
-      - ssh open rm -rf /var/www/{{.PROJECT}}/dist
-      - ssh open tar zxf /var/www/{{.PROJECT}}/dist.tgz --directory /var/www/geo
-      - ssh open rm /var/www/{{.PROJECT}}/dist.tgz
+      - scp dist.tgz $REMOTE_HOST:/var/www/{{.PROJECT}}
+      - ssh $REMOTE_HOST rm -rf /var/www/{{.PROJECT}}/dist
+      - ssh $REMOTE_HOST tar zxf /var/www/{{.PROJECT}}/dist.tgz --directory /var/www/{{.PROJECT}}
+      - ssh $REMOTE_HOST rm /var/www/{{.PROJECT}}/dist.tgz

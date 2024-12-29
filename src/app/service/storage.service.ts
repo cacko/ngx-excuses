@@ -9,6 +9,7 @@ import { ApiAction, ApiEntity } from '../entity/api.entity';
 export class StorageService {
 
   protected readonly storage = inject(LocalStorageService);
+  private readonly KEY_AUTOPLAY = "autoplay";
 
   getId(id: number, action: ApiAction): ApiEntity | null {
     const items = this.getItems(action);
@@ -30,6 +31,15 @@ export class StorageService {
 
   private getItems(action: ApiAction): ApiEntity[] {
     return this.storage.get(action) || [];
+  }
+
+  set autoplay(value: boolean) {
+    this.storage.set(this.KEY_AUTOPLAY, value);
+  }
+
+  get autoplay(): boolean {
+    const val: boolean | null =  this.storage.get(this.KEY_AUTOPLAY);
+    return val === null ? true : val;
   }
 
 }

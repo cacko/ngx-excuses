@@ -2,15 +2,31 @@
 <div actions>
     <button
         mat-icon-button
+        copy
+        [cdkCopyToClipboard]="url"
         aria-label="Copy excuse to clipboard"
     >
         <mat-icon>content_copy</mat-icon>
     </button>
     <button
         mat-icon-button
+        next
         aria-label="Next Random"
         (click)="onNextRandom()"
     >
         <mat-icon>shuffle</mat-icon>
     </button>
+    <button
+        mat-icon-button
+        autoplay
+        [attr.state]="autoplay"
+        aria-label="Autoplay"
+        (click)="onAutoplay()"
+    >
+        <mat-icon>autoplay</mat-icon>
+    </button>
 </div>
+<mat-progress-bar *ngIf="this.autoplay"
+    mode="determinate"
+    [value]="progress"
+></mat-progress-bar>
