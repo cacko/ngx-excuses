@@ -1,0 +1,31 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  PROJECT: excuses
+
+tasks:
+
+  default:
+    cmds:
+      - ng serve
+    silent: true
+
+  push:
+    desc: commit and pushes current changes
+    cmds:
+      - git add .  || true
+      - git commit -am "a" || true
+      - git push || true
+
+  deploy:
+    desc: deploy
+    dir: web
+    cmds:
+      - ng build
+      - tar cfz dist.tgz dist/ngx-excuses/browser
+      - scp dist.tgz open:/var/www/{{.PROJECT}}
+      - ssh open rm -rf /var/www/{{.PROJECT}}/dist
+      - ssh open tar zxf /var/www/{{.PROJECT}}/dist.tgz --directory /var/www/geo
+      - ssh open rm /var/www/{{.PROJECT}}/dist.tgz

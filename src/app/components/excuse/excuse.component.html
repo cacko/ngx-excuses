@@ -1,0 +1,16 @@
+<h1>{{excuse.text_en}}</h1>
+<div actions>
+    <button
+        mat-icon-button
+        aria-label="Copy excuse to clipboard"
+    >
+        <mat-icon>content_copy</mat-icon>
+    </button>
+    <button
+        mat-icon-button
+        aria-label="Next Random"
+        (click)="onNextRandom()"
+    >
+        <mat-icon>shuffle</mat-icon>
+    </button>
+</div>

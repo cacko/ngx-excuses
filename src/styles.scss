@@ -1,1 +1,86 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+@use "./scss/components/excuse";
+@use "./scss/components/loader";
+
+html {
+  color-scheme: dark;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$cyan-palette,
+        tertiary: mat.$orange-palette,
+        theme-type: dark,
+      ),
+      typography: (
+        plain-family: "JetBrains Mono",
+        brand-family: "JetBrains Mono",
+        bold-weight: 900,
+        medium-weight: 500,
+        regular-weight: 300,
+      ),
+      density: 0,
+    )
+  );
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 0;
+  margin: 0;
+
+  app-root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    @media screen and (min-width: 450px) {
+      flex-direction: row;
+    }
+
+    @media screen and (max-width: 960px) {
+      .no-mobile {
+        display: none;
+      }
+      .on-mobile {
+        display: unset;
+      }
+    }
+
+    @media screen and (min-width: 960px) {
+      .no-desktop {
+        display: none;
+      }
+      .on-desktop {
+        display: unset;
+      }
+    }
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+a {
+  color: inherit;
+  text-transform: none;
+}
