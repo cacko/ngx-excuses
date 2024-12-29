@@ -45,7 +45,7 @@ export class ExcuseComponent implements OnInit, OnDestroy {
       this.progress = ((300 * v) / 20000) * 100;
       if (this.progress >= 100) {
         this.stopTimer();
-        this.onNextRandom();
+        this.goToNextRandom();
       }
     });
     return true;
@@ -72,8 +72,15 @@ export class ExcuseComponent implements OnInit, OnDestroy {
     this.stopTimer();
   }
 
-  onNextRandom(): void {
+  goToNextRandom(): void {
     this.router.navigateByUrl(`/e/${this.excuseService.getRandomId()}`);
+  }
+
+  onNextRandom($event: any) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    // $event.currentTarget.disabled = true;
+    this.goToNextRandom();
   }
 
   onAutoplay(): void {

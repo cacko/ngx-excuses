@@ -1,6 +1,7 @@
 @use "@angular/material" as mat;
 @use "./scss/components/excuse";
 @use "./scss/components/loader";
+@use "./scss/components/background";
 html {
   color-scheme: dark;
   @include mat.theme(
@@ -10,7 +11,7 @@ html {
         tertiary: mat.$orange-palette,
         theme-type: dark,
       ),
-      typography: "Share Tech Mono",
+      typography: "Caveat",
       density: 0,
     )
   );
@@ -39,7 +40,7 @@ body {
   scrollbar-width: none;
   padding: 0;
   margin: 0;
-  font-family: "Share Tech Mono";
+  font-family: "Caveat";
 
   app-root {
     display: flex;
